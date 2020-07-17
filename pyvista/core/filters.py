@@ -86,17 +86,17 @@ class DataSetFilters:
 
         Parameters
         ----------
-        normal : tuple(float) or str
+        normal : tuple(float) or str, optional
             Length 3 tuple for the normal vector direction. Can also be
             specified as a string conventional direction such as ``'x'`` for
-            ``(1,0,0)`` or ``'-x'`` for ``(-1,0,0)``, etc.
+            ``(1,0,0)`` or ``'-x'`` for ``(-1,0,0)``, etc.  The default value is ``x``.
 
-        origin : tuple(float)
+        origin : tuple(float), optional
             The center ``(x,y,z)`` coordinate of the plane on which the clip
-            occurs
+            occurs.  The default value is the center of the dataset.
 
         invert : bool
-            Flag on whether to flip/invert the clip
+            Flag on whether to flip/invert the clip.  The default value is True.
 
         value : float:
             Set the clipping value of the implicit function (if clipping with
@@ -104,7 +104,7 @@ class DataSetFilters:
             The default value is 0.0.
 
         inplace : bool, optional
-            Updates mesh in-place while returning nothing.
+            Updates mesh in-place while returning nothing.  The default value is False.
 
         """
         if isinstance(normal, str):
@@ -129,7 +129,7 @@ class DataSetFilters:
 
         Parameters
         ----------
-        bounds : tuple(float)
+        bounds : tuple(float), optional
             Length 6 sequence of floats: (xmin, xmax, ymin, ymax, zmin, zmax).
             Length 3 sequence of floats: distances from the min coordinate of
             of the input mesh. Single float value: uniform distance from the
@@ -137,14 +137,15 @@ class DataSetFilters:
             a plane collection (normal, center, ...).
             :class:`pyvista.PolyData`: if a poly mesh is passed that represents
             a box with 6 faces that all form a standard box, then planes will
-            be extracted from the box to define the clipping region.
+            be extracted from the box to define the clipping region.  The default
+            value is None.
 
-        invert : bool
-            Flag on whether to flip/invert the clip
+        invert : bool, optional
+            Flag on whether to flip/invert the clip.  The default value is True.
 
         factor : float, optional
             If bounds are not given this is the factor along each axis to
-            extract the default box.
+            extract the default box.  The default value is 0.35.
 
         """
         if bounds is None:
@@ -202,7 +203,7 @@ class DataSetFilters:
         inplace : bool
             If True, a new scalar array will be added to the ``point_arrays``
             of this mesh. Otherwise a copy of this mesh is returned with that
-            scalar field.
+            scalar field.  The default value is False.
         """
         function = vtk.vtkImplicitPolyDataDistance()
         function.SetInput(surface)
@@ -230,10 +231,10 @@ class DataSetFilters:
             The PolyData surface mesh to use as a clipping function. If this
             mesh is not PolyData, the external surface will be extracted.
 
-        invert : bool
-            Flag on whether to flip/invert the clip
+        invert : bool, optional
+            Flag on whether to flip/invert the clip. The default value is True.
 
-        value : float:
+        value : float, optional
             Set the clipping value of the implicit function (if clipping with
             implicit function) or scalar value (if clipping with scalars).
             The default value is 0.0.
@@ -241,7 +242,7 @@ class DataSetFilters:
         compute_distance : bool, optional
             Compute the implicit distance from the mesh onto the input dataset.
             A new array called ``'implicit_distance'`` will be added to the
-            output clipped mesh.
+            output clipped mesh.  The default value is False.
 
         """
         if not isinstance(surface, vtk.vtkPolyData):
