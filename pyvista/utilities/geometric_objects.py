@@ -62,19 +62,19 @@ def Cylinder(center=(0.0, 0.0, 0.0), direction=(1.0, 0.0, 0.0),
 
     Parameters
     ----------
-    center : list or tuple or np.ndarray
+    center : list or tuple or np.ndarray,  optional
         Location of the centroid in [x, y, z]
 
-    direction : list or tuple or np.ndarray
+    direction : list or tuple or np.ndarray,  optional
         Direction cylinder points to  in [x, y, z]
 
-    radius : float
+    radius : float,  optional
         Radius of the cylinder.
 
-    height : float
+    height : float,  optional
         Height of the cylinder.
 
-    resolution : int
+    resolution : int,  optional
         Number of points on the circular face of the cylinder.
 
     capping : bool, optional
@@ -117,22 +117,22 @@ def CylinderStructured(radius=0.5, height=1.0,
 
     Parameters
     ----------
-    radius : float
+    radius : float,  optional
         Radius of the cylinder. If an iterable
 
-    height : float
+    height : float,  optional
         Height (length) of the cylinder along its Z-axis
 
-    center : list or tuple or np.ndarray
+    center : list or tuple or np.ndarray,  optional
         Location of the centroid in [x, y, z]
 
-    direction : list or tuple or np.ndarray
+    direction : list or tuple or np.ndarray,  optional
         Direction cylinder Z-axis in [x, y, z]
 
-    theta_resolution : int
+    theta_resolution : int,  optional
         Number of points on the circular face of the cylinder.
 
-    z_resolution : int
+    z_resolution : int,  optional
         Number of points along the height (Z-axis) of the cylinder
 
     """
@@ -184,10 +184,10 @@ def Arrow(start=(0.,0.,0.), direction=(1.,0.,0.), tip_length=0.25,
 
     Parameters
     ----------
-    start : np.ndarray
+    start : np.ndarray,  optional
         Start location in [x, y, z]
 
-    direction : list or tuple or np.ndarray
+    direction : list or tuple or np.ndarray,  optional
         Direction the arrow points to in [x, y, z]
 
     tip_length : float, optional
@@ -248,7 +248,7 @@ def Sphere(radius=0.5, center=(0, 0, 0), direction=(0, 0, 1), theta_resolution=3
     center : np.ndarray or list, optional
         Center in [x, y, z]
 
-    direction : list or tuple or np.ndarray
+    direction : list or tuple or np.ndarray,  optional
         Direction the top of the sphere points to in [x, y, z]
 
     theta_resolution: int , optional
@@ -298,22 +298,22 @@ def Plane(center=(0, 0, 0), direction=(0, 0, 1), i_size=1, j_size=1,
 
     Parameters
     ----------
-    center : list or tuple or np.ndarray
+    center : list or tuple or np.ndarray,  optional
         Location of the centroid in [x, y, z]
 
-    direction : list or tuple or np.ndarray
+    direction : list or tuple or np.ndarray,  optional
         Direction of the plane's normal in [x, y, z]
 
-    i_size : float
+    i_size : float,  optional
         Size of the plane in the i direction.
 
-    j_size : float
+    j_size : float,  optional
         Size of the plane in the j direction.
 
-    i_resolution : int
+    i_resolution : int,  optional
         Number of points on the plane in the i direction.
 
-    j_resolution : int
+    j_resolution : int,  optional
         Number of points on the plane in the j direction.
 
     Returns
@@ -341,13 +341,13 @@ def Line(pointa=(-0.5, 0., 0.), pointb=(0.5, 0., 0.), resolution=1):
 
     Parameters
     ----------
-    pointa : np.ndarray or list
+    pointa : np.ndarray or list,  optional
         Location in [x, y, z].
 
-    pointb : np.ndarray or list
+    pointb : np.ndarray or list,  optional
         Location in [x, y, z].
 
-    resolution : int
+    resolution : int,  optional
         number of pieces to divide line into
 
     """
@@ -379,19 +379,19 @@ def Cube(center=(0., 0., 0.), x_length=1.0, y_length=1.0, z_length=1.0, bounds=N
 
     Parameters
     ----------
-    center : np.ndarray or list
+    center : np.ndarray or list,  optional
         Center in [x, y, z].
 
-    x_length : float
+    x_length : float,  optional
         length of the cube in the x-direction.
 
-    y_length : float
+    y_length : float,  optional
         length of the cube in the y-direction.
 
-    z_length : float
+    z_length : float,  optional
         length of the cube in the z-direction.
 
-    bounds : np.ndarray or list
+    bounds : np.ndarray or list,  optional
         Specify the bounding box of the cube. If given, all other arguments are
         ignored. ``(xMin,xMax, yMin,yMax, zMin,zMax)``
 
@@ -415,11 +415,11 @@ def Box(bounds=(-1., 1., -1., 1., -1., 1.), level=0, quads=True):
 
     Parameters
     ----------
-    bounds : np.ndarray or list
+    bounds : np.ndarray or list,  optional
         Specify the bounding box of the cube.
         ``(xMin, xMax, yMin, yMax, zMin, zMax)``
 
-    level : int
+    level : int,  optional
         Level of subdivision of the faces.
 
     quads : bool, optional
@@ -446,25 +446,25 @@ def Cone(center=(0.,0.,0.), direction=(1.,0.,0.), height=1.0, radius=None,
 
     Parameters
     ----------
-    center : np.ndarray or list
+    center : np.ndarray or list,  optional
         Center in [x, y, z]. middle of the axis of the cone.
 
-    direction : np.ndarray or list
+    direction : np.ndarray or list,  optional
         Direction vector in [x, y, z]. orientation vector of the cone.
 
-    height : float
+    height : float,  optional
         Height along the cone in its specified direction.
 
-    radius : float
+    radius : float,  optional
         Base radius of the cone
 
-    capping : bool
+    capping : bool,  optional
         Turn on/off whether to cap the base of the cone with a polygon.
 
-    angle : float
+    angle : float,  optional
         The angle degrees between the axis of the cone and a generatrix.
 
-    resolution : int
+    resolution : int,  optional
         Number of facets used to represent the cone
 
     """
@@ -496,16 +496,16 @@ def Polygon(center=(0.,0.,0.), radius=1, normal=(0,0,1), n_sides=6):
 
     Parameters
     ----------
-    center : np.ndarray or list
+    center : np.ndarray or list,  optional
         Center in [x, y, z]. middle of the axis of the polygon.
 
-    radius : float
+    radius : float,  optional
         The radius of the polygon
 
-    normal : np.ndarray or list
+    normal : np.ndarray or list,  optional
         Direction vector in [x, y, z]. orientation vector of the cone.
 
-    n_sides : int
+    n_sides : int,  optional
         Number of sides of the polygon
 
     """
@@ -528,22 +528,22 @@ def Disc(center=(0., 0., 0.), inner=0.25, outer=0.5, normal=(0, 0, 1), r_res=1,
 
     Parameters
     ----------
-    center : np.ndarray or list
+    center : np.ndarray or list,  optional
         Center in [x, y, z]. middle of the axis of the disc.
 
-    inner : float
+    inner : float,  optional
         The inner radius
 
-    outer : float
+    outer : float,  optional
         The outer radius
 
-    normal : np.ndarray or list
+    normal : np.ndarray or list,  optional
         Direction vector in [x, y, z]. orientation vector of the cone.
 
-    r_res: int
+    r_res: int,  optional
         Number of points in radius direction.
 
-    r_res: int
+    c_res: int,  optional
         Number of points in circumferential direction.
 
     """
