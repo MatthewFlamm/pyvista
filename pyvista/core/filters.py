@@ -1262,6 +1262,9 @@ class DataSetFilters:
             dataset.active_vectors_name = orient
             orient = True
         if scale and orient:
+            print(dataset.active_scalars_info)
+            print(dataset.active_vectors_info)
+
             if (dataset.active_vectors_info.association == FieldAssociation.CELL
                 and dataset.active_scalars_info.association == FieldAssociation.CELL
             ):
