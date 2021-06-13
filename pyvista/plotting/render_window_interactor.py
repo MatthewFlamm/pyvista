@@ -37,7 +37,7 @@ class RenderWindowInteractor():
         self._key_press_event_callbacks = collections.defaultdict(list)
 
         # Set default style
-        self._style = 'RubberBandPick'
+        self._style = 'vtkInteractorStyleRubberBandPick'
         self._style_class = None
         self._plotter = plotter
         self._click_observer = None
@@ -168,7 +168,7 @@ class RenderWindowInteractor():
         The trackball camera is the default interactor style.
 
         """
-        self._style = 'TrackballCamera'
+        self._style = 'vtkInteractorStyleTrackballCamera'
         self._style_class = None
         return self.update_style()
 
@@ -178,7 +178,7 @@ class RenderWindowInteractor():
         This allows to rotate actors around the scene.
 
         """
-        self._style = 'TrackballActor'
+        self._style = 'vtkInteractorStyleTrackballActor'
         self._style_class = None
         return self.update_style()
 
@@ -195,7 +195,7 @@ class RenderWindowInteractor():
          - SHIFT Right Mouse triggers pick events
 
         """
-        self._style = 'Image'
+        self._style = 'vtkInteractorStyleImage'
         self._style_class = None
         return self.update_style()
 
@@ -216,7 +216,7 @@ class RenderWindowInteractor():
         button is for panning.)
 
         """
-        self._style = 'JoystickCamera'
+        self._style = 'vtkInteractorStyleJoystickCamera'
         self._style_class = None
         return self.update_style()
 
@@ -229,7 +229,7 @@ class RenderWindowInteractor():
         determined from the shorter side of the drawn rectangle.
 
         """
-        self._style = 'RubberBandZoom'
+        self._style = 'vtkInteractorStyleRubberBandZoom'
         self._style_class = None
         return self.update_style()
 
@@ -242,7 +242,7 @@ class RenderWindowInteractor():
         (the angle from the horizon).
 
         """
-        self._style = 'Terrain'
+        self._style = 'vtkInteractorStyleTerrain'
         self._style_class = None
         return self.update_style()
 
@@ -258,7 +258,7 @@ class RenderWindowInteractor():
         rectangle. In other respects it behaves the same as its parent class.
 
         """
-        self._style = 'RubberBandPick'
+        self._style = 'vtkInteractorStyleRubberBandPick'
         self._style_class = None
         return self.update_style()
 
@@ -277,7 +277,12 @@ class RenderWindowInteractor():
         mouse - Pan. Scroll wheel - Zoom.
 
         """
-        self._style = 'RubberBand2D'
+        self._style = 'vtkInteractorStyleRubberBand2D'
+        self._style_class = None
+        return self.update_style()
+
+    def enqble_parallel_coordinates_style(self):
+        self._style = "vtkInteractorParallelCoordinatesStyle"
         self._style_class = None
         return self.update_style()
 
@@ -399,7 +404,7 @@ def _style_factory(klass):
     except ImportError:  # pragma: no cover
         import vtk as vtkInteractionStyle
 
-    class CustomStyle(getattr(vtkInteractionStyle, 'vtkInteractorStyle' + klass)):
+    class CustomStyle(getattr(vtkInteractionStyle, klass)):
 
         def __init__(self, parent):
             super().__init__()
