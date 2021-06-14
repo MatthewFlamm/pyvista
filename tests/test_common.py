@@ -2,7 +2,7 @@ import pickle
 import numpy as np
 import pytest
 import vtk
-from hypothesis import assume, given, settings, HealthCheck
+from hypothesis import assume, given, settings, HealthCheck, reproduce_failure
 from hypothesis.extra.numpy import arrays, array_shapes
 from hypothesis.strategies import composite, integers, floats, one_of
 from vtk.util.numpy_support import vtk_to_numpy
@@ -249,7 +249,7 @@ def test_translate_should_translate_grid(grid, axis_amounts):
     grid_points = grid.points.copy() + np.array(axis_amounts)
     assert np.allclose(grid_copy.points, grid_points)
 
-
+@reproduce_failure('6.14.0', b'AAAAAAUAAAAAAAAAAA==')
 @settings(suppress_health_check=[HealthCheck.function_scoped_fixture],
           max_examples=HYPOTHESIS_MAX_EXAMPLES)
 @given(angle=one_of(floats(allow_infinity=False, allow_nan=False), integers()))
