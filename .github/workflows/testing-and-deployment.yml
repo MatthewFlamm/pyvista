@@ -39,12 +39,7 @@ jobs:
 
       - name: Test Core API
         run: |
-          pytest -v --ignore=tests/plotting
-
-      - name: Test Plotting
-        run: |
-          pytest -v tests/plotting
-
+          pytest -v tests/test_common.py:test_rotate_should_match_vtk_rotation --hypothesis-show-statistics
 
   LinuxConda:
     runs-on: ubuntu-latest
